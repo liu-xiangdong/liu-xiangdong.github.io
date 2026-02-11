@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个性化音乐网站</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面主体样式 - 核心背景设置 */
+        body {
+            /* 替换为你的背景图片路径（本地图片直接放同文件夹，或用网络图片链接） */
+            background-image: url("background.jpg");
+            /* 背景图片覆盖整个页面 */
+            background-size: cover;
+            /* 背景图片居中显示 */
+            background-position: center;
+            /* 背景图片固定，滚动页面不移动 */
+            background-attachment: fixed;
+            /* 防止背景图片重复 */
+            background-repeat: no-repeat;
+            /* 页面最小高度占满屏幕 */
+            min-height: 100vh;
+            /* 文字居中 */
+            text-align: center;
+            /* 内边距，避免文字贴边 */
+            padding: 50px 20px;
+            /* 文字颜色（可根据背景调整） */
+            color: white;
+            /* 文字阴影，提升可读性 */
+            text-shadow: 0 0 10px #000;
+            /* 字体设置 */
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 自定义文字容器样式 */
+        .text-container {
+            /* 半透明背景，突出文字 */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 内边距 */
+            padding: 30px;
+            /* 圆角 */
+            border-radius: 10px;
+            /* 宽度限制 */
+            max-width: 800px;
+            /* 居中 */
+            margin: 0 auto 30px;
+        }
+
+        /* 标题文字样式 */
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* 正文文字样式 */
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        /* 音频控件样式（可选，隐藏或美化） */
+        audio {
+            /* 固定在页面底部，方便操作 */
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 音频控件宽度 */
+            width: 90%;
+            max-width: 600px;
+            /* 半透明背景 */
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* 首次访问提示样式 */
+        .tip {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 自定义文字区域 - 替换这里的文字即可 -->
+    <div class="text-container">
+        <h1>这是我的个性化标题</h1>
+        <p>这是我想要展示的文字内容<br>可以换行、加任意内容<br>比如：欢迎来到我的音乐小站～</p>
+    </div>
+
+    <!-- 首次访问提示（解决自动播放限制） -->
+    <div class="tip" id="tip">点击页面任意位置即可播放音乐 🎵</div>
+
+    <!-- 音乐播放核心标签 -->
+    <audio id="music" loop preload="auto">
+        <!-- 替换为你的音乐文件路径（支持mp3、wav等格式） -->
+        <source src="music.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放，请更换现代浏览器（如Chrome、Edge）
+    </audio>
+
+    <script>
+        // 获取音频元素和提示框
+        const music = document.getElementById('music');
+        const tip = document.getElementById('tip');
+
+        // 解决浏览器自动播放限制（现代浏览器要求用户交互后才能播放音频）
+        window.addEventListener('load', () => {
+            // 尝试自动播放，失败则显示提示
+            music.play().catch(() => {
+                tip.style.display = 'block';
+            });
+        });
+
+        // 点击页面任意位置播放音乐
+        document.addEventListener('click', () => {
+            music.play();
+            tip.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
