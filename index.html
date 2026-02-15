@@ -36,7 +36,8 @@
             text-align: left;
             /* 统一容器内所有文字的字体大小 */
             font-size: 20px;
-            line-height: 1.8;
+            /* 降低行高，缩小整体行间距（关键修改） */
+            line-height: 1.2;
         }
 
         /* 标题文字样式（保留，备用） */
@@ -49,6 +50,8 @@
         .indent {
             text-indent: 2em;
             display: block;
+            /* 给缩进行设置底部间距，精准控制行间距 */
+            margin-bottom: 8px;
         }
 
         /* 音频控件样式 */
@@ -83,13 +86,13 @@
     <!-- 自定义文字区域 - 统一字体大小，规范排版 -->
     <div class="text-container">
         陈梦思：<br>
-        <span class="indent">你好！</span><br>
-        <span class="indent">新年快乐！</span><br>
+        <span class="indent">你好！</span>
+        <span class="indent">新年快乐！</span>
         <span class="indent">你好，新同桌！再见，陈梦思！</span>
     </div>
 
     <!-- 首次访问提示（解决自动播放限制） -->
-    <div class="tip" id="tip">请点击页面任意位置🎵</div>
+    <div class="tip" id="tip">点击页面任意位置即可播放音乐 🎵</div>
 
     <!-- 音乐播放核心标签 -->
     <audio id="music" loop preload="auto">
