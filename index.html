@@ -20,8 +20,6 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             min-height: 100vh;
-            /* 移除文字居中，改为默认靠左 */
-            /* text-align: center; */
             padding: 50px 20px;
             color: white;
             text-shadow: 0 0 10px #000;
@@ -35,8 +33,10 @@
             border-radius: 10px;
             max-width: 800px;
             margin: 0 auto 30px;
-            /* 容器内文字靠左对齐 */
             text-align: left;
+            /* 统一容器内所有文字的字体大小 */
+            font-size: 20px;
+            line-height: 1.8;
         }
 
         /* 标题文字样式（保留，备用） */
@@ -45,12 +45,10 @@
             margin-bottom: 20px;
         }
 
-        /* 正文文字样式 - 核心排版调整 */
-        p {
-            font-size: 20px;
-            line-height: 1.8;
-            /* 第二行缩进2个字符 */
+        /* 正文缩进调整（仅对需要缩进的行生效） */
+        .indent {
             text-indent: 2em;
+            display: block;
         }
 
         /* 音频控件样式 */
@@ -82,16 +80,16 @@
     </style>
 </head>
 <body>
-    <!-- 自定义文字区域 - 两行示例文字 -->
+    <!-- 自定义文字区域 - 统一字体大小，规范排版 -->
     <div class="text-container">
         陈梦思：<br>
-        <p>你好！<br>
-        <p>新年快乐！<br>
-        <p>你好，新同桌！再见，陈梦思！</p>
+        <span class="indent">你好！</span><br>
+        <span class="indent">新年快乐！</span><br>
+        <span class="indent">你好，新同桌！再见，陈梦思！</span>
     </div>
 
     <!-- 首次访问提示（解决自动播放限制） -->
-    <div class="tip" id="tip">点击页面任意位置即可播放音乐 🎵</div>
+    <div class="tip" id="tip">请点击页面任意位置🎵</div>
 
     <!-- 音乐播放核心标签 -->
     <audio id="music" loop preload="auto">
